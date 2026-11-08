@@ -1,0 +1,27 @@
+# --- Backend (Django) ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+db.sqlite3
+security.log
+*.log
+staticfiles/
+.env
+.env.*
+!.env.example
+
+# --- Frontend (JS) ---
+# (No hay mucho que ignorar aquí, pero por las dudas)
+*.log
+.DS_Store
+
+# --- Editores / Sistema ---
+.vscode/
+.idea/
+
+# --- Scripts de prueba (no subir) ---
+escuchar.py
