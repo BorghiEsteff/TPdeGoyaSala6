@@ -177,7 +177,12 @@ INSTALLED_APPS += ["corsheaders"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "https://taskflow-app.com",
+] + [o for o in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",") if o]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
 ]
 
 LOGGING = {
@@ -213,4 +218,4 @@ GRAPHENE = {
 }
 
 # --- Producci?n (Clase 12) ---
-CSRF_TRUSTED_ORIGINS = [o for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o]
+CSRF_TRUSTED_ORIGINS = [o for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o] + ["https://*.vercel.app"]

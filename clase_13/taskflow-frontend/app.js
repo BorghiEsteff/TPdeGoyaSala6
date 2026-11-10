@@ -1,5 +1,5 @@
-const API_URL = "http://127.0.0.1:8000/api";
-const WS_URL = "ws://127.0.0.1:8000/ws";
+const API_URL = "https://tpdegoyasala6.onrender.com/api";
+const WS_URL = "wss://tpdegoyasala6.onrender.com/ws";
 
 let accessToken = sessionStorage.getItem("taskflow_token") || null;
 let currentUsername = sessionStorage.getItem("taskflow_user") || "";
@@ -169,12 +169,7 @@ async function createTask() {
 
     if (!response.ok) {
       const data = await response.json();
-
-      let mensajeError = "Error al crear la tarea.";
-      if (data.detail) {
-        mensajeError = typeof data.detail === 'object' ? data.detail.detail : data.detail;
-      }
-      errorBox.textContent = mensajeError;
+      errorBox.textContent = data.detail || JSON.stringify(data);
       return;
     }
 
@@ -265,3 +260,4 @@ window.addEventListener("DOMContentLoaded", () => {
     mostrarApp();
   }
 });
+

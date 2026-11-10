@@ -1,26 +1,23 @@
+asgiref>=3.9.0
+cryptography==42.0.7
 Django==5.0.6
-djangorestframework==3.15.1
+django-allauth[socialaccount]==0.63.3
 django-cors-headers==4.4.0
 django-filter==24.2
+djangorestframework==3.15.1
 djangorestframework-simplejwt==5.3.1
-django-allauth[socialaccount]==0.63.3
-python-dotenv==1.0.1
 nh3==0.2.18
+oauthlib==3.2.2
+PyJWT==2.8.0
+python-dotenv==1.0.1
 requests==2.32.3
-
-# Tiempo real
+sqlparse==0.5.0
 channels[daphne]==4.3.2
 channels-redis==4.2.0
 websocket-client==1.9.2
-
-# GraphQL
 graphene-django==3.2.0
-
-# Producción y Base de datos
-whitenoise==6.7.0
-psycopg[binary]==3.1.19
-
-# Testing
 pytest==8.2.2
 pytest-django==4.8.0
 pytest-cov==5.0.0
+psycopg[binary]==3.1.19
+whitenoise==6.7.0

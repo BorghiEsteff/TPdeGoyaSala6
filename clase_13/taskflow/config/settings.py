@@ -177,9 +177,14 @@ INSTALLED_APPS += ["corsheaders"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
     "http://127.0.0.1:5500",
     "http://localhost:5500",
     "https://taskflow-app.com",
+] + [o for o in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",") if o]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
 ]
 
 LOGGING = {
@@ -202,12 +207,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [
-                {
-                    "address": os.getenv("REDIS_URL", "redis://127.0.0.1:6379"),
-                    "socket_timeout": 20,
-                }
-            ],
+            "hosts": [os.getenv("REDIS_URL", "redis://127.0.0.1:6379")],
         },
     },
 }
@@ -220,4 +220,4 @@ GRAPHENE = {
 }
 
 # --- Producci?n (Clase 12) ---
-CSRF_TRUSTED_ORIGINS = [o for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o]
+CSRF_TRUSTED_ORIGINS = [o for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o] + ["https://*.vercel.app"]

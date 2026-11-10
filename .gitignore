@@ -3,6 +3,8 @@
 
 # Environments
 .env
+*.env
+render.env
 .venv
 env/
 venv/
